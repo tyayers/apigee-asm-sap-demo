@@ -1,0 +1,133 @@
+const tracer = require('@google-cloud/trace-agent').start({
+  projectId: 'bruno-1407a',
+  keyFilename: 'bruno-owner-key.json',
+});
+
+const compression = require('compression');
+const express = require("express");
+const axios = require('axios');
+const history = require('connect-history-api-fallback-exclusions');
+const dotenv = require('dotenv');
+dotenv.config();
+
+var app = express();
+app.use(history({
+  exclusions: [
+    "/parameters/*",
+    "/orders/*",
+    "/customers/*",
+    "/maps/*",
+    "/updates/*"
+  ]
+}));
+app.use(compression());
+
+// SSE
+const SSE = require('express-sse');
+const sse = new SSE();
+
+app.use(express.static('public'));
+
+// app.get('/dashboard', (req, res) => {
+//   console.log("get dashboardservice");
+
+//   var result = 
+//   {
+//       parameters: {
+//         useTestData: true,
+//         platformName: "Google Cloud \n Apigee"
+//       }
+//   };
+
+//   res.send(result);
+// });
+
+app.get('/updates', sse.init);
+
+app.post('/updates', (req, res) => {
+  console.log(`Updates, now broadcasting..`);
+  var update = {
+    timestamp: (new Date().toISOString())
+  };
+  sse.send(update);
+  res.send("Alert received.");
+});
+
+app.get('/parameters/:name', (req, res) => {
+    var name = req.params.name;
+    console.log("parameter: " + name + "=" + process.env[name]);
+    var result = {};
+    result[name] = process.env[name];
+    res.send(result);
+});
+
+app.get('/parameters', (req, res) => {
+  console.log("get parameters");
+
+  var result = 
+  {
+      parameters: {
+        useTestData: true,
+        platformName: "Google Cloud \n Apigee"
+      }
+  };
+
+  if (process.env.useTestData) result.parameters["useTestData"] = process.env.useTestData.toLowerCase() == "true";
+  if (process.env.baseUrl) result.parameters["baseUrl"] = process.env.baseUrl;
+  if (process.env.platformName) result.parameters["platformName"] = process.env.platformName;
+  if (process.env.showMap) result.parameters["showMap"] = process.env.showMap;
+  res.send(result);
+});
+
+app.get('/orders', (req, res) => {
+  var options = {
+    method: "GET",
+    url: process.env.apiBaseUrl + "/orderservice/orders",
+    headers: {
+      "x-api-key": process.env.orderKey
+    }
+  };
+  axios(options).then((response) => {
+    res.send(response.data);
+  });
+});
+
+app.get('/orders/:id', (req, res) => {
+  var id = req.params.id;
+  var options = {
+    method: "GET",
+    url: process.env.productCatalogBaseUrl + "/orderservice/orders/" + id,
+    headers: {
+      "x-api-key": process.env.orderKey
+    }
+  };
+  axios(options).then((response) => {
+    res.send(response.data);
+  });
+});
+
+app.get('/maps/:operation', (req, res) => {
+  var op = req.params.operation;
+  var url = process.env.apiBaseUrl + "/maps/" + op;
+
+  if (op == "js")
+    url += "?callback=" + req.query.callback;
+  else if (op == "place") {
+    url += "?input=" + req.query.input;
+  }
+
+  var options = {
+    method: "GET",
+    url: url,
+    headers: {
+      "x-api-key": process.env.mapKey
+    }
+  };
+  axios(options).then((response) => {
+    res.send(response.data);
+  });
+});
+
+var server = app.listen("8080", function(){
+    console.log("Server started at http://localhost:8080");
+});

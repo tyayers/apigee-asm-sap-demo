@@ -1,0 +1,1 @@
+gcloud builds submit --tag "eu.gcr.io/$PROJECT/broadcastservice"
