@@ -14,6 +14,6 @@
     <Flows/>
     <HTTPTargetConnection>
         <Properties/>
-        <URL>http://broadcastservice.default.svc.cluster.local:8081</URL>
+        <URL>https://broadcastservice-wysd2j4anq-ew.a.run.app</URL>
     </HTTPTargetConnection>
 </TargetEndpoint>

@@ -1,5 +1,3 @@
-docker build -t local/locationservice .
-docker tag local/locationservice eu.gcr.io/$1/locationservice
-docker push eu.gcr.io/$1/locationservice
+gcloud builds submit --tag "eu.gcr.io/$PROJECT/locationservice"
 
-gcloud run deploy locationservice --image eu.gcr.io/bruno-1407a/locationservice --platform managed --project bruno-1407a --region europe-west1 --allow-unauthenticated
+gcloud run deploy locationservice --image eu.gcr.io/$PROJECT/locationservice --platform managed --project $PROJECT --region europe-west1 --allow-unauthenticated

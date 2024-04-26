@@ -135,10 +135,10 @@ var orderCol []SalesOrder = []SalesOrder{
 		SalesOffice:                "",
 		SalesDistrict:              "7",
 		SoldToParty:                "1003766",
-		CreationDate:               "1/2/2021",
+		CreationDate:               "02 Jan 23 15:04 MST",
 		CreatedByUser:              "LARRY",
 		LastChangeDate:             "",
-		SalesOrderDate:             "12/30/2020",
+		SalesOrderDate:             "02 Jan 23 15:04 MST",
 		TotalNetAmount:             "245.83",
 		TransactionCurrency:        "USD",
 		PricingDate:                "1/2/2021",
@@ -155,10 +155,10 @@ var orderCol []SalesOrder = []SalesOrder{
 		SalesOffice:                "",
 		SalesDistrict:              "",
 		SoldToParty:                "1003765",
-		CreationDate:               "2/11/2021",
+		CreationDate:               "02 Jan 23 15:04 MST",
 		CreatedByUser:              "LARRY",
 		LastChangeDate:             "",
-		SalesOrderDate:             "2/7/2021",
+		SalesOrderDate:             "02 Jan 23 15:04 MST",
 		TotalNetAmount:             "901.36",
 		TransactionCurrency:        "USD",
 		PricingDate:                "2/11/2021",
@@ -175,10 +175,10 @@ var orderCol []SalesOrder = []SalesOrder{
 		SalesOffice:                "",
 		SalesDistrict:              "",
 		SoldToParty:                "1003765",
-		CreationDate:               "12/29/2020",
+		CreationDate:               "02 Jan 23 15:04 MST",
 		CreatedByUser:              "LARRY",
 		LastChangeDate:             "",
-		SalesOrderDate:             "12/29/2020",
+		SalesOrderDate:             "02 Jan 23 15:04 MST",
 		TotalNetAmount:             "1180.86",
 		TransactionCurrency:        "USD",
 		PricingDate:                "12/29/2020",
@@ -195,13 +195,13 @@ var orderCol []SalesOrder = []SalesOrder{
 		SalesOffice:           "",
 		SalesDistrict:         "",
 		SoldToParty:           "1003764",
-		CreationDate:          "1/20/2021",
+		CreationDate:          "02 Jan 23 15:04 MST",
 		CreatedByUser:         "LARRY",
 		LastChangeDate:        "",
 		SalesOrderDate:        "1/19/2021",
 		TotalNetAmount:        "175.75",
 		TransactionCurrency:   "USD",
-		PricingDate:           "1/20/2021",
+		PricingDate:           "02 Jan 23 15:04 MST",
 		RequestedDeliveryDate: "4/21/2021",
 	},
 	{
@@ -214,10 +214,10 @@ var orderCol []SalesOrder = []SalesOrder{
 		SalesOffice:           "",
 		SalesDistrict:         "",
 		SoldToParty:           "1003764",
-		CreationDate:          "3/8/2021",
+		CreationDate:          "02 Jan 23 15:04 MST",
 		CreatedByUser:         "LARRY",
 		LastChangeDate:        "",
-		SalesOrderDate:        "3/7/2021",
+		SalesOrderDate:        "02 Jan 23 15:04 MST",
 		TotalNetAmount:        "1576.55",
 		TransactionCurrency:   "USD",
 		PricingDate:           "3/8/2021",
@@ -233,10 +233,10 @@ var orderCol []SalesOrder = []SalesOrder{
 		SalesOffice:           "",
 		SalesDistrict:         "2",
 		SoldToParty:           "1003767",
-		CreationDate:          "2/23/2021",
+		CreationDate:          "02 Jan 23 15:04 MST",
 		CreatedByUser:         "LARRY",
 		LastChangeDate:        "",
-		SalesOrderDate:        "2/23/2021",
+		SalesOrderDate:        "02 Jan 23 15:04 MST",
 		TotalNetAmount:        "1112.74",
 		TransactionCurrency:   "USD",
 		PricingDate:           "2/23/2021",
@@ -252,10 +252,10 @@ var orderCol []SalesOrder = []SalesOrder{
 		SalesOffice:           "",
 		SalesDistrict:         "2",
 		SoldToParty:           "1003767",
-		CreationDate:          "1/6/2021",
+		CreationDate:          "02 Jan 23 15:04 MST",
 		CreatedByUser:         "LARRY",
 		LastChangeDate:        "",
-		SalesOrderDate:        "1/5/2021",
+		SalesOrderDate:        "02 Jan 23 15:04 MST",
 		TotalNetAmount:        "1051.28",
 		TransactionCurrency:   "USD",
 		PricingDate:           "1/6/2021",
@@ -271,10 +271,10 @@ var orderCol []SalesOrder = []SalesOrder{
 		SalesOffice:           "",
 		SalesDistrict:         "7",
 		SoldToParty:           "1003768",
-		CreationDate:          "12/17/2020",
+		CreationDate:          "02 Jan 23 15:04 MST",
 		CreatedByUser:         "LARRY",
 		LastChangeDate:        "",
-		SalesOrderDate:        "12/17/2020",
+		SalesOrderDate:        "02 Jan 23 15:04 MST",
 		TotalNetAmount:        "2260.6",
 		TransactionCurrency:   "USD",
 		PricingDate:           "12/17/2020",
@@ -290,10 +290,10 @@ var orderCol []SalesOrder = []SalesOrder{
 		SalesOffice:           "",
 		SalesDistrict:         "",
 		SoldToParty:           "1003768",
-		CreationDate:          "3/18/2021",
+		CreationDate:          "02 Jan 23 15:04 MST",
 		CreatedByUser:         "SERGEY",
 		LastChangeDate:        "",
-		SalesOrderDate:        "3/15/2021",
+		SalesOrderDate:        "02 Jan 23 15:04 MST",
 		TotalNetAmount:        "1356.08",
 		TransactionCurrency:   "EUR",
 		PricingDate:           "3/18/2021",
@@ -309,10 +309,10 @@ var orderCol []SalesOrder = []SalesOrder{
 		SalesOffice:           "",
 		SalesDistrict:         "",
 		SoldToParty:           "1003768",
-		CreationDate:          "2/8/2021",
+		CreationDate:          "02 Jan 23 15:04 MST",
 		CreatedByUser:         "SERGEY",
 		LastChangeDate:        "",
-		SalesOrderDate:        "2/5/2021",
+		SalesOrderDate:        "02 Jan 23 15:04 MST",
 		TotalNetAmount:        "81.86",
 		TransactionCurrency:   "EUR",
 		PricingDate:           "2/8/2021",
@@ -344,13 +344,13 @@ func SetOrderDefaults(o *SalesOrder, i int) {
 
 	if o.SalesOrderDate == "" {
 		newDate := time.Now()
-		o.SalesOrderDate = newDate.Format("1/2/2006")
-		o.CreationDate = newDate.Format("1/2/2006")
+		o.SalesOrderDate = newDate.Format(time.RFC822)
+		o.CreationDate = newDate.Format(time.RFC822)
 	}
 
 	if o.RequestedDeliveryDate == "" {
-		tempDate, _ := time.Parse("1/2/2006", o.SalesOrderDate)
-		o.RequestedDeliveryDate = tempDate.Add(time.Hour * 24 * 4).Format("1/2/2006")
+		tempDate, _ := time.Parse(time.RFC822, o.SalesOrderDate)
+		o.RequestedDeliveryDate = tempDate.Add(time.Hour * 24 * 4).Format(time.RFC822)
 	}
 
 	if o.CreatedByUser == "" {
@@ -427,8 +427,8 @@ func orderHandler(w http.ResponseWriter, r *http.Request) {
 		}
 		if p.SalesOrderDate == "" {
 			newDate := time.Now()
-			p.SalesOrderDate = newDate.Format("1/2/2006")
-			p.CreationDate = newDate.Format("1/2/2006")
+			p.SalesOrderDate = newDate.Format(time.RFC822)
+			p.CreationDate = newDate.Format(time.RFC822)
 		}
 		if p.OverallTotalDeliveryStatus == "" {
 			p.OverallTotalDeliveryStatus = "SCHEDULED"
@@ -440,8 +440,8 @@ func orderHandler(w http.ResponseWriter, r *http.Request) {
 
 		// Do new sort
 		sort.Slice(orderCol, func(i, j int) bool {
-			myDate1, _ := time.Parse("1/2/2006", orderCol[i].SalesOrderDate)
-			myDate2, _ := time.Parse("1/2/2006", orderCol[j].SalesOrderDate)
+			myDate1, _ := time.Parse(time.RFC822, orderCol[i].SalesOrderDate)
+			myDate2, _ := time.Parse(time.RFC822, orderCol[j].SalesOrderDate)
 			return myDate1.After(myDate2)
 		})
 
@@ -470,8 +470,8 @@ func main() {
 
 	// Do initial sorting of orders
 	sort.Slice(orderCol, func(i, j int) bool {
-		myDate1, _ := time.Parse("1/2/2006", orderCol[i].SalesOrderDate)
-		myDate2, _ := time.Parse("1/2/2006", orderCol[j].SalesOrderDate)
+		myDate1, _ := time.Parse(time.RFC822, orderCol[i].SalesOrderDate)
+		myDate2, _ := time.Parse(time.RFC822, orderCol[j].SalesOrderDate)
 		return myDate1.After(myDate2)
 	})
 

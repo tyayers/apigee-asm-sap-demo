@@ -49,7 +49,7 @@ app.post('/locations/:orderid', (req, res) => {
       };
 
       locs.push(newObj);
-      res.status(401).send(newObj);
+      res.status(201).send(newObj);
     })
       .catch((error) => {
         res.status(404).send("Location not available.");

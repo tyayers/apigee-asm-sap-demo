@@ -11,6 +11,6 @@
         <Response/>
     </PostFlow>
     <HTTPTargetConnection>
-        <URL>http://dashboardservice.default.svc.cluster.local:8080</URL>
+        <URL>https://dashboardservice-wysd2j4anq-ew.a.run.app</URL>
     </HTTPTargetConnection>
 </TargetEndpoint>

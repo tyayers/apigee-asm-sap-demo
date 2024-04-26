@@ -1,11 +1,24 @@
 const express = require("express");
 const webSocketServer = require('websocket').server;
 const http = require('http');
-// Spinning the http server and the websocket server.
-const server = http.createServer();
-server.listen(8081);
+
+var app = express();
+
+app.post('/updates', (req, res) => {
+  console.log(`Updates, now broadcasting..`);
+  var update = {
+    timestamp: (new Date().toISOString())
+  };
+  sendMessage(JSON.stringify(update));
+  res.send("Alert received.");
+});
+
+var expressserver = app.listen("8080", function(){
+  console.log("Server started at http://localhost:8080");
+});
+
 const wsServer = new webSocketServer({
-  httpServer: server
+  httpServer: expressserver
 });
 
 // I'm maintaining all active connections in this object
@@ -37,17 +50,3 @@ wsServer.on('request', function(request) {
   });
 });
 
-var app = express();
-
-app.post('/updates', (req, res) => {
-  console.log(`Updates, now broadcasting..`);
-  var update = {
-    timestamp: (new Date().toISOString())
-  };
-  sendMessage(JSON.stringify(update));
-  res.send("Alert received.");
-});
-
-var expressserver = app.listen("8080", function(){
-  console.log("Server started at http://localhost:8080");
-});

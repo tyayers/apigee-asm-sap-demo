@@ -1,7 +1,7 @@
-const tracer = require('@google-cloud/trace-agent').start({
-  projectId: 'bruno-1407a',
-  keyFilename: 'bruno-owner-key.json',
-});
+// const tracer = require('@google-cloud/trace-agent').start({
+//   projectId: 'bruno-1407a',
+//   keyFilename: 'bruno-owner-key.json',
+// });
 
 const compression = require('compression');
 const express = require("express");
@@ -9,6 +9,10 @@ const axios = require('axios');
 const history = require('connect-history-api-fallback-exclusions');
 const dotenv = require('dotenv');
 dotenv.config();
+
+var clientBasePath = "";
+if (process.env.clientBasePath)
+    clientBasePath = process.env.clientBasePath;
 
 var app = express();
 app.use(history({
@@ -26,25 +30,12 @@ app.use(compression());
 const SSE = require('express-sse');
 const sse = new SSE();
 
-app.use(express.static('public'));
+console.log(clientBasePath);
+app.use(clientBasePath, express.static('./public'));
 
-// app.get('/dashboard', (req, res) => {
-//   console.log("get dashboardservice");
+app.get(clientBasePath + '/updates', sse.init);
 
-//   var result = 
-//   {
-//       parameters: {
-//         useTestData: true,
-//         platformName: "Google Cloud \n Apigee"
-//       }
-//   };
-
-//   res.send(result);
-// });
-
-app.get('/updates', sse.init);
-
-app.post('/updates', (req, res) => {
+app.post(clientBasePath + '/updates', (req, res) => {
   console.log(`Updates, now broadcasting..`);
   var update = {
     timestamp: (new Date().toISOString())
@@ -53,15 +44,16 @@ app.post('/updates', (req, res) => {
   res.send("Alert received.");
 });
 
-app.get('/parameters/:name', (req, res) => {
+app.get(clientBasePath + '/parameters/:name', (req, res) => {
     var name = req.params.name;
     console.log("parameter: " + name + "=" + process.env[name]);
     var result = {};
     result[name] = process.env[name];
+
     res.send(result);
 });
 
-app.get('/parameters', (req, res) => {
+app.get(clientBasePath + '/parameters', (req, res) => {
   console.log("get parameters");
 
   var result = 
@@ -76,10 +68,12 @@ app.get('/parameters', (req, res) => {
   if (process.env.baseUrl) result.parameters["baseUrl"] = process.env.baseUrl;
   if (process.env.platformName) result.parameters["platformName"] = process.env.platformName;
   if (process.env.showMap) result.parameters["showMap"] = process.env.showMap;
+
   res.send(result);
 });
 
-app.get('/orders', (req, res) => {
+app.get(clientBasePath + '/orders', async (req, res) => {
+
   var options = {
     method: "GET",
     url: process.env.apiBaseUrl + "/orderservice/orders",
@@ -87,12 +81,13 @@ app.get('/orders', (req, res) => {
       "x-api-key": process.env.orderKey
     }
   };
+
   axios(options).then((response) => {
     res.send(response.data);
   });
 });
 
-app.get('/orders/:id', (req, res) => {
+app.get(clientBasePath + '/orders/:id', (req, res) => {
   var id = req.params.id;
   var options = {
     method: "GET",
@@ -106,9 +101,11 @@ app.get('/orders/:id', (req, res) => {
   });
 });
 
-app.get('/maps/:operation', (req, res) => {
+app.get(clientBasePath + '/maps/:operation', (req, res) => {
   var op = req.params.operation;
-  var url = process.env.apiBaseUrl + "/maps/" + op;
+  var url = process.env.apiBaseUrl + clientBasePath + "/maps/" + op;
+
+  console.log(url);
 
   if (op == "js")
     url += "?callback=" + req.query.callback;

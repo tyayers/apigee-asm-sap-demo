@@ -112,7 +112,7 @@
         <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
         <script>
             var map;
-            var popups = [];
+            var popups = {};
             const urlParams = new URLSearchParams(window.location.search);
             const pizzaflag = urlParams.get('pizzaflag');
             if (pizzaflag == "true") {
@@ -154,13 +154,13 @@
 
             function loadData() {
 
-                // First clear data
-                for (var i=0; i<popups.length; i++) {
-                    popups[i].setMap(null);
-                    popups[i] = null;
-                }
+                // // First clear data
+                // for (var i=0; i<popups.length; i++) {
+                //     popups[i].setMap(null);
+                //     popups[i] = null;
+                // }
 
-                popups = [];
+                // popups = [];
 
                 var url = "/dashboard/orders";
                 axios.get(url).then(function(response) {
@@ -168,14 +168,14 @@
                   for (i=0; i<response.data.orders.length; i++) {
                     var order = response.data.orders[i];
 
-                    if (order.Latitude) {
+                    if (order.Latitude && !popups[order.SalesOrder]) {
                       Popup = createPopupClass();
                       var marker = document.createElement("DIV");
                       marker.innerHTML = order.SalesOrder + "<br><span style='position: relative; top: -5px'>" + order.OverallTotalDeliveryStatus + "</span>";
                       marker.style = "font-size: 18px;";
                       popup = new Popup(new google.maps.LatLng(order.Latitude,order.Longitude),marker);
                       popup.setMap(map);
-                      popups.push(popup);
+                      popups[order.SalesOrder] = popup;
                     }
                   }
                 });                
@@ -221,7 +221,7 @@
         
             function connect() {
                 window.WebSocket = window.WebSocket || window.MozWebSocket;
-                var connection = new WebSocket('wss://test.apigee.theapishop.com/broadcastservice');
+                var connection = new WebSocket('wss://dev.34-36-221-53.nip.io/broadcastservice');
 
                 connection.onopen = function () {
                 // connection is opened and ready to use

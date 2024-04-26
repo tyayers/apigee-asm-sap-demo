@@ -11,6 +11,6 @@
     <Response>calloutResponse</Response>
     <HTTPTargetConnection>
         <Properties/>
-        <URL>https://api.apigee.theapishop.com/broadcastservice/updates</URL>
+        <URL>https://dev.34-36-221-53.nip.io/broadcastservice/updates</URL>
     </HTTPTargetConnection>
 </ServiceCallout>
